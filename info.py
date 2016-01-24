@@ -1,5 +1,6 @@
 # coding: utf-8
 # Here your code !
+import random
 class Info:
     def __init__(self,info_id,name):
         self.info_id = info_id
@@ -54,8 +55,7 @@ class PlayerInfo(Info):
         self.repdigit = 0
 
 class LandInfo(Info):
-    def __init__(self,land_id):
-        name = 'GO'
+    def __init__(self,land_id,name):
         Info.__init__(self,land_id, name)
         self.position = self.GO
         self.price = 0
@@ -80,9 +80,8 @@ class LandInfo(Info):
         return self.mortage/10
 
 class Colors(LandInfo):
-    def __init__(self,land_id):
-        name = 'GO'
-        Info.__init__(self,land_id, name)
+    def __init__(self,land_id, name):
+        LandInfo.__init__(self,land_id, name)
         self.buildfee = 0
         self.house = 0
         self.hotel = 0
@@ -110,7 +109,6 @@ class A1(Colors):
         self.position = self.A1
         self.price = 60
         self.buildfee = 50
-        self.group = [self.A2]
         self.rental_fee = [2, 10, 30, 90, 160, 250] 
 
 class A2(Colors):
@@ -119,7 +117,6 @@ class A2(Colors):
         self.position = self.A2
         self.price = 60
         self.buildfee = 50
-        self.group = [self.A1]
         self.rental_fee = [4, 20, 50, 180, 320, 450]
 
 class B1(Colors):
@@ -128,7 +125,6 @@ class B1(Colors):
         self.position = self.B1
         self.price = 100
         self.buildfee = 50
-        self.group = [self.B2,self.B3]
         self.rental_fee = [6, 30, 90, 270, 400, 550]
 
 class B2(Colors):
@@ -137,7 +133,6 @@ class B2(Colors):
         self.position = self.B2
         self.price = 100
         self.buildfee = 50
-        self.group = [self.B1,self.B3]
         self.rental_fee = [6, 30, 90, 270, 400, 550]
         
 class B3(Colors):
@@ -146,7 +141,6 @@ class B3(Colors):
         self.position = self.B3
         self.price = 120
         self.buildfee = 50
-        self.group = [self.B1,self.B2]
         self.rental_fee = [8, 40, 100, 300, 450, 600]
 
 class C1(Colors):
@@ -155,7 +149,6 @@ class C1(Colors):
         self.position = self.C1
         self.price = 140
         self.buildfee = 100
-        self.group = [self.C2,self.C3]
         self.rental_fee = [10, 50, 150, 450, 625, 750]
 
 class C2(Colors):
@@ -164,7 +157,6 @@ class C2(Colors):
         self.position = self.C2
         self.price = 140
         self.buildfee = 100
-        self.group = [self.C1,self.C3]
         self.rental_fee = [10, 50, 150, 450, 625, 750]
 
 class C3(Colors):
@@ -173,7 +165,6 @@ class C3(Colors):
         self.position = self.C3
         self.price = 160
         self.buildfee = 100
-        self.group = [self.C1,self.C2]
         self.rental_fee = [12, 60, 180, 500, 700, 900]
 
 class D1(Colors):
@@ -182,7 +173,6 @@ class D1(Colors):
         self.position = self.D1
         self.price = 180
         self.buildfee = 100
-        self.group = [self.D2,self.D3]
         self.rental_fee = [14, 70, 200, 550, 750, 950]
 
 class D2(Colors):
@@ -191,7 +181,6 @@ class D2(Colors):
         self.position = self.D2
         self.price = 180
         self.buildfee = 100
-        self.group = [self.D1,self.D3]
         self.rental_fee = [14, 70, 200, 550, 750, 950]
 
 class D3(Colors):
@@ -200,7 +189,6 @@ class D3(Colors):
         self.position = self.D3
         self.price = 200
         self.buildfee = 100
-        self.group = [self.D1,self.D2]
         self.rental_fee = [16, 80, 220, 600, 800, 1000]
 
 class E1(Colors):
@@ -209,7 +197,6 @@ class E1(Colors):
         self.position = self.E1
         self.price = 220
         self.buildfee = 150
-        self.group = [self.E2,self.E3]
         self.rental_fee = [18, 90, 250, 700, 875, 1050]
 
 class E2(Colors):
@@ -218,7 +205,6 @@ class E2(Colors):
         self.position = self.E2
         self.price = 220
         self.buildfee = 150
-        self.group = [self.E1,self.E3]
         self.rental_fee = [18, 90, 250, 700, 875, 1050]
 
 class E3(Colors):
@@ -236,7 +222,6 @@ class F1(Colors):
         self.position = self.F1
         self.price = 260
         self.buildfee = 150
-        self.group = [self.F2,self.F3]
         self.rental_fee = [22, 110, 330, 800, 975, 1150]
 
 class F2(Colors):
@@ -245,7 +230,6 @@ class F2(Colors):
         self.position = self.F2
         self.price = 260
         self.buildfee = 150
-        self.group = [self.F1,self.F3]
         self.rental_fee = [22, 110, 330, 800, 975, 1150]
 
 class F3(Colors):
@@ -254,7 +238,6 @@ class F3(Colors):
         self.position = self.F3
         self.price = 280
         self.buildfee = 150
-        self.group = [self.F1,self.F2]
         self.rental_fee = [24, 120, 360, 850, 1025, 1200]
         
 class G1(Colors):
@@ -263,7 +246,6 @@ class G1(Colors):
         self.position = self.G1
         self.price = 300
         self.buildfee = 200
-        self.group = [self.G2,self.G3]
         self.rental_fee = [26, 130, 390, 900, 1100, 1275]
 
 class G2(Colors):
@@ -272,7 +254,6 @@ class G2(Colors):
         self.position = self.G2
         self.price = 300
         self.buildfee = 200
-        self.group = [self.G1,self.G3]
         self.rental_fee = [26, 130, 390, 900, 1100, 1275]
 
 class G3(Colors):
@@ -281,7 +262,6 @@ class G3(Colors):
         self.position = self.G3
         self.price = 320
         self.buildfee = 200
-        self.group = [self.G1,self.G2]
         self.rental_fee = [28, 150, 450, 1000, 1200, 1400]
 
 class H1(Colors):
@@ -290,7 +270,6 @@ class H1(Colors):
         self.position = self.H1
         self.price = 350
         self.buildfee = 200
-        self.group = [self.H2]
         self.rental_fee = [35, 175, 500, 1100, 1300, 1500]
 
 class H2(Colors):
@@ -299,21 +278,86 @@ class H2(Colors):
         self.position = self.H2
         self.price = 400
         self.buildfee = 200
-        self.group = [self.H1]
         self.rental_fee = [50, 200, 600, 1400, 1700, 2000]
 
-def shuffle(cards):
-    for i in range(SHUFFLE):
+class Railroad(LandInfo):
+    def __init__(self,land_id,name,position):
+        LandInfo.__init__(self,land_id, name)
+        self.position = position
+        self.price = 200
+        self.rental_fee = [25, 50, 100, 200]
+    def how_much_fee(self,own_number):
+        return self.rental_fee[len(self.group)]
+
+class R1(Railroad):
+    def __init__(self):
+        Railroad.__init__(self,self.R1, 'R1', self.R1)
+
+class R2(Railroad):
+    def __init__(self):
+        Railroad.__init__(self,self.R2, 'R2', self.R2)
+
+class R3(Railroad):
+    def __init__(self):
+        Railroad.__init__(self,self.R3, 'R3', self.R3)
+
+class R4(Railroad):
+    def __init__(self):
+        Railroad.__init__(self,self.R4, 'R4', self.R4)
+        
+class PublicUnitility(LandInfo):
+    def __init__(self,land_id,name,position):
+        LandInfo.__init__(self,land_id, name)
+        self.position = position
+        self.price = 150
+    def how_much_fee(self):
+        if len(self.group) == 2:
+            return random.randint(1,6) * 10
+        else:
+            return random.randint(1,6) * 4
+
+class U1(PublicUnitility):
+    def __init__(self):
+        Railroad.__init__(self,self.U1, 'U1', self.U1)
+
+class U2(PublicUnitility):
+    def __init__(self):
+        Railroad.__init__(self,self.U2, 'U2', self.U2)
+        
+def shuffle(cards,shuffle):
+    for i in range(shuffle):
         card = cards.pop(random.randint(0,len(cards)-1))
         cards += [card]
     return cards
+    
+class CardPoint(Info):
+    def __init__(self, name, shuffle_count=1000):
+        Info.__init__(self, self.GO, name)
+        self.cards = []
+    def direction(self):
+        card = self.cards[0]
+        if card == 'JailCard':
+            self.cards = self.cards[1:]
+        else:
+            self.cards = self.cards[1:] + [self.cards[0]]
+        return card
+    def returnJailCard(self):
+        if not 'JailCard' in self.cards:
+            self.cards += ['JailCard'] 
 
-class Chance(Info):
-  def __init__(self, shuffle=200):
-    Info.__init__(self, self.CH1)
-    self.shuffle = shuffle 
-    self.cards = [GO,JAIL,C1,E3,H2,R1] + [i]*6 + [i-3]
-    self.bound_list = shuffle(self.bound_list)
-  def direction(self):
-    self.bound_list = self.bound_list[1:] + [self.bound_list[0]]
-    return self.bound_list[-1]
+class Chance(CardPoint):
+    def __init__(self, shuffle_count=1000):
+        CardPoint.__init__(self, self.CH1, 'Chance')
+        self.cards = shuffle([
+                            'Go2Go','Go2Jail','Go2C1','Go2E3','Go2H2','Go2R1','Go2NextR','Go2NextR','Go2NextU','GoBack3',
+                            'Receive150$','Receive50$','Pay15$','Pay50$EachPlayer','Pay25$EachHouseAndPay100$EachHotel','JailCard'
+                            ],200)
+
+class CommunityChest(CardPoint):
+    def __init__(self, shuffle_count=1000):
+        CardPoint.__init__(self, self.CC1, 'CommunityChest')
+        self.cards = shuffle([
+                            'Go2Go','Go2Jail','Receive100$','Receive100$','Receive100$','Receive10$EachPlayer','Receive50$','Receive25$'
+                            'Receive20$','Receive10$','Pay50$','Pay50$','Pay100$','Pay40$EachHouseAndPay115$EachHotel','JailCard'
+                            ],200)
+
