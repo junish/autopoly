@@ -1,18 +1,7 @@
 # coding: utf-8
 # Here your code !
 
-#from info import Info
-
-class Info:
-    def __init__(self,info_id,name):
-        self.info_id = info_id
-        self.name = name
-    def get_id(self):
-        return self.info_id
-    def get_name(self):
-        return self.name
-    def clear_name(self):
-        self.name = ''
+from info import Info
 
 def event_id_generater(start):
     i = start
