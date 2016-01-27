@@ -3,7 +3,7 @@
 
 from info import Info
 
-def event_id_generater(start):
+def id_generator(start):
     i = start
     while True:
         yield i
@@ -57,7 +57,7 @@ class OfferLog(LogInfo):
 
 class LogManager:
     def __init__(self,start):
-        self.event_id_generator = event_id_generater(start)
+        self.event_id_generator = id_generator(start)
         self.logs = []
     def add_buylog(self, when, who, what, how_much):
         self.logs.append(BuyLog(next(self.event_id_generator), when, who, what, how_much))
